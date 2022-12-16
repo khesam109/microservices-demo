@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "twitter-to-kafka-service.welcome-message",
+      "type": "java.lang.String",
+      "description": "Description for twitter-to-kafka-service.welcome-message."
+  }
+] }
