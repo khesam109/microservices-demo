@@ -1,10 +1,11 @@
 package com.microservices.demo.twitter.to.kafka.service.runner.impl;
 
-import com.microservices.demo.twitter.to.kafka.service.config.TwitterToKafkaServiceConfigData;
+import com.microservices.demo.config.TwitterToKafkaServiceConfigData;
 import com.microservices.demo.twitter.to.kafka.service.listener.TwitterKafkaStatusListener;
 import com.microservices.demo.twitter.to.kafka.service.runner.StreamRunner;
 import jakarta.annotation.PreDestroy;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.stereotype.Component;
@@ -15,10 +16,12 @@ import twitter4j.TwitterStreamFactory;
 
 import java.util.Arrays;
 
-@Slf4j
 @Component
 @ConditionalOnProperty(name = "twitter-to-kafka-service.enable-mock-tweets", havingValue = "false", matchIfMissing = true)
 public class TwitterKafkaStreamRunner implements StreamRunner {
+
+    private static final Logger LOG = LoggerFactory.getLogger(TwitterKafkaStreamRunner.class);
+
 
     private final TwitterToKafkaServiceConfigData twitterToKafkaServiceConfigData;
     private final TwitterKafkaStatusListener twitterKafkaStatusListener;
@@ -44,7 +47,7 @@ public class TwitterKafkaStreamRunner implements StreamRunner {
     @PreDestroy
     public void shutdown() {
         if (this.twitterStream != null) {
-            log.info("Closing twitter stream!");
+            LOG.info("Closing twitter stream!");
             twitterStream.shutdown();
         }
     }
@@ -54,6 +57,6 @@ public class TwitterKafkaStreamRunner implements StreamRunner {
         FilterQuery filterQuery = new FilterQuery(keywords);
         twitterStream.filter(filterQuery);
 
-        log.info("Started filtering twitter stream for keywords {}", Arrays.toString(keywords));
+        LOG.info("Started filtering twitter stream for keywords {}", Arrays.toString(keywords));
     }
 }
