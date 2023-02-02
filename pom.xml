@@ -83,6 +83,11 @@
 				<artifactId>spring-cloud-config-server</artifactId>
 				<version>${spring-cloud.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-config-server</artifactId>
+				<version>${spring-cloud.version}</version>
+			</dependency>
 
 			<!--	LOCAL		-->
 			<dependency>
