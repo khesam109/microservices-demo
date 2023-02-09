@@ -19,6 +19,7 @@
 		<module>kafka</module>
 		<module>common-config</module>
         <module>config-server</module>
+        <module>kafka-to-elastic-service</module>
     </modules>
 	<packaging>pom</packaging>
 
@@ -109,6 +110,11 @@
 				<groupId>com.microservices.demo</groupId>
 				<artifactId>kafka-producer</artifactId>
 				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.microservices.demo</groupId>
+				<artifactId>kafka-consumer</artifactId>
+				<version>0.0.1-SNAPSHOT</version>
 			</dependency>
 			<dependency>
 				<groupId>com.microservices.demo</groupId>
