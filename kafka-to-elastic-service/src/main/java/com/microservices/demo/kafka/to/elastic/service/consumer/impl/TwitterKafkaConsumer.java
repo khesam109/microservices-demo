@@ -43,6 +43,10 @@ public class TwitterKafkaConsumer implements KafkaConsumer<Long, TwitterAvroMode
         this.kafkaConsumerConfigData = kafkaConsumerConfigData;
     }
 
+    /**
+     * this is because we set kafka-consumer-config.auto-startup to false
+     * @param event
+     */
     @EventListener
     public void onAppStarted(ApplicationStartedEvent event) {
         kafkaAdminClient.checkTopicsCreated();
